@@ -29,6 +29,7 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
+# Ignore the build folder
 /build/
 
 # Symbolication related
@@ -41,3 +42,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# Include specific folders and files
+!main/
+!lib/
+!assets/
+!pubspec.yaml

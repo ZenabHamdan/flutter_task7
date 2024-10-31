@@ -1,13 +1,14 @@
 import 'package:task7/exports/exports.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -26,6 +27,16 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 71.0, bottom: 40.0),
                 child: SvgPicture.asset(AppImages.logoImage),
+              ),
+              CustomTextFormField(
+                controller: nameController,
+                keyboardType: TextInputType.text,
+                validator: nameValidator,
+                hintText: 'Fullname',
+                hintStyle: AppTextStyles.hintText,
+              ),
+              SizedBox(
+                height: 12.9.h,
               ),
               CustomTextFormField(
                 controller: emailController,
@@ -48,22 +59,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 20.9.h,
               ),
               CustomButton(
-                  title: 'Log in',
+                  title: 'Sign Up',
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
                   }),
-              SizedBox(
-                height: 20.16.h,
-              ),
-              Text(
-                textAlign: TextAlign.center,
-                "Forgot Password?",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.44.sp,
-                    color: Color(0xff0082CD)),
-              ),
               SizedBox(
                 height: 26.8.h,
               ),
@@ -148,26 +148,68 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: 117.23.h,
+                height: 20.8.h,
+              ),
+              Center(
+                child: Text.rich(
+                  textAlign: TextAlign.center,
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                          text: 'By signing up you accept the ',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.63.sp,
+                          )),
+                      TextSpan(
+                          text: 'Terms of Service\n ',
+                          style: TextStyle(
+                            color: Color(0xff0082CD),
+                            fontFamily: 'Nunito Sans',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12.63.sp,
+                          )),
+                      TextSpan(
+                          text: 'and ',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.63.sp,
+                          )),
+                      TextSpan(
+                          text: 'Privacy Policy',
+                          style: TextStyle(
+                            color: Color(0xff0082CD),
+                            fontFamily: 'Nunito Sans',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12.63.sp,
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 37.59.h,
               ),
               InkWell(
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const RegisterScreen()));
+                      builder: (context) => const LoginScreen()));
                 },
                 child: Center(
                   child: Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                            text: 'Don\'t have an account?',
+                            text: 'Already have an account?',
                             style: TextStyle(
                               color: Colors.grey,
                               fontWeight: FontWeight.w400,
                               fontSize: 12.63.sp,
                             )),
                         TextSpan(
-                            text: 'Sign Up',
+                            text: 'Log in',
                             style: TextStyle(
                               color: Color(0xff0082CD),
                               fontFamily: 'Nunito Sans',

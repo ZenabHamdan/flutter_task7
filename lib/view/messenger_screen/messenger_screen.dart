@@ -1,7 +1,6 @@
-import 'package:task7/core/constants/app_text_styles.dart';
-import 'package:task7/widgets/widgets.dart';
 
-import '../../core/constants/app_colors.dart';
+import 'package:task7/widgets/chat_item.dart';
+
 import '../../exports/exports.dart';
 
 class MessagesScreen extends StatelessWidget {

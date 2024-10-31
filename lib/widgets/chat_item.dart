@@ -1,12 +1,4 @@
-
-import 'package:flutter_svg/svg.dart';
-import 'package:badges/badges.dart' as badges;
-
-import '../core/constants/app_colors.dart';
-import '../core/constants/app_images.dart';
-import '../core/constants/app_text_styles.dart';
-import '../exports/exports.dart';
-import '../view/messenger_screen/messenger_screen.dart';
+import 'package:task7/exports/exports.dart';
 
 class ChatItem extends StatelessWidget {
   final String name;
@@ -71,7 +63,7 @@ class ChatScreen extends StatelessWidget {
       "message": "Hey, can I ask something? I need your help please",
       "time": "15 min",
       "notificationCount": 4,
-      "avatarImagePath": "assets/images/Avatar_1.png",
+      "avatarImagePath": AppImages.ava1Image,
       "isOnline": true,
     },
     {
@@ -79,7 +71,7 @@ class ChatScreen extends StatelessWidget {
       "message": "Thank’s for your information dude!",
       "time": "Yesterday",
       "notificationCount": 0,
-      "avatarImagePath": "assets/images/Avatar_2.png",
+      "avatarImagePath": AppImages.ava2Image,
       "isOnline": false,
     },
     {
@@ -87,7 +79,7 @@ class ChatScreen extends StatelessWidget {
       "message": "Did you take the free illustration class yesterday?",
       "time": "Yesterday",
       "notificationCount": 1,
-      "avatarImagePath": "assets/images/Avatar_3.png",
+      "avatarImagePath": AppImages.ava3Image,
       "isOnline": true,
     },
     {
@@ -95,7 +87,7 @@ class ChatScreen extends StatelessWidget {
       "message": "Hey Samuel,where did you get your point? can we exchange?",
       "time": "2 week ago",
       "notificationCount": 2,
-      "avatarImagePath": "assets/images/Avatar_4.png",
+      "avatarImagePath": AppImages.ava4Image,
       "isOnline": true,
     },
     {
@@ -103,7 +95,7 @@ class ChatScreen extends StatelessWidget {
       "message": "that’s true bro, hahaha",
       "time": "14/08/20",
       "notificationCount": 0,
-      "avatarImagePath": "assets/images/Avatar_5.png",
+      "avatarImagePath": AppImages.ava5Image,
       "isOnline": false,
     },
     {
@@ -111,7 +103,7 @@ class ChatScreen extends StatelessWidget {
       "message": "Hi Bor How Are you Could you please help me?",
       "time": "Yesterday",
       "notificationCount": 0,
-      "avatarImagePath": "assets/images/Avatar_6.png",
+      "avatarImagePath": AppImages.ava6Image,
       "isOnline": false,
     },
     {
@@ -119,7 +111,7 @@ class ChatScreen extends StatelessWidget {
       "message": "My notes about the school for today, it's amazing",
       "time": "Yesterday",
       "notificationCount": 0,
-      "avatarImagePath": "assets/images/Avatar_0.png",
+      "avatarImagePath": AppImages.ava0Image,
       "isOnline": true,
     },
 
@@ -130,7 +122,6 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: ListView.separated(
         itemCount: chatData.length,
         itemBuilder: (context, index) {
@@ -213,14 +204,14 @@ class DateTimeAndNotification extends StatelessWidget {
             Text(
               time,
               style: TextStyle(
-                color: AppColors.iconArrowBackIos,
+                color: AppColors.dividerColor,
                 fontSize: 12.63.sp,
               ),
             ),
             SizedBox(width: 5.w),
             Icon(
               Icons.arrow_back_ios,
-              color: AppColors.iconArrowBackIos,
+              color: AppColors.dividerColor,
               size: 21.0.sp,
             ),
           ],
@@ -231,7 +222,7 @@ class DateTimeAndNotification extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 8.w),
             child: Container(
               padding: EdgeInsets.all(8.r),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.blue,
                 shape: BoxShape.circle,
               ),
@@ -247,89 +238,3 @@ class DateTimeAndNotification extends StatelessWidget {
 }
 
 
-class NavigationBarScreen extends StatefulWidget {
-  const NavigationBarScreen({super.key});
-
-  @override
-  State<NavigationBarScreen> createState() => _NavigationBarScreenState();
-}
-
-class _NavigationBarScreenState extends State<NavigationBarScreen> {
-  int currentIndex = 0;
-  int messageCount = 2;
-
-  final List<Widget> screens = [
-  //  const HomeScreen(),
-  //  const DisableScreen(),
-     MessagesScreen(),
-  //  const ProfileScreen(),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.disableIcon),
-              activeIcon: SvgPicture.asset(
-                AppImages.menuIcon,
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.navIcon),
-              activeIcon: SvgPicture.asset(
-                AppImages.navIcon,
-                color: AppColors.buttonColor,
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: badges.Badge(
-                badgeStyle: const badges.BadgeStyle(badgeColor: Color(0xffFF8500)),
-                badgeContent: Text(
-                  '$messageCount',
-                  style: TextStyle(color: Colors.white, fontSize: 12),
-                ),
-                child: SvgPicture.asset(
-                  AppImages.messageIcon,
-                  color: Colors.grey,
-                  width: 24,
-                  height: 24,
-                ),
-              ),
-              activeIcon: badges.Badge(
-                badgeContent: Text(
-                  '$messageCount',
-                  style: TextStyle(color: Colors.white, fontSize: 12),
-                ),
-                child: SvgPicture.asset(
-                  AppImages.messageIcon,
-                  color: AppColors.buttonColor,
-                  width: 24,
-                  height: 24,
-                ),
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.profileIcon),
-              activeIcon: SvgPicture.asset(
-                AppImages.profileIcon,
-                color: AppColors.buttonColor,
-              ),
-              label: ''),
-        ],
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppColors.buttonColor,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-      ),
-    );
-  }
-}
