@@ -5,10 +5,10 @@ class ImageIndicator extends StatelessWidget {
   final int itemCount;
 
   const ImageIndicator({
-    super.key,
+    Key? key,
     required this.currentIndex,
     required this.itemCount,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class ImageIndicator extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(itemCount, (index) {
         return Container(
-          margin: EdgeInsets.symmetric(horizontal: 5.0.w),
+          margin: const EdgeInsets.symmetric(horizontal: 5.0),
           width: 13.52.w,
           height: 5.31.h,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(7.08.r),
+            borderRadius: BorderRadius.circular(7.08),
             color: currentIndex == index ? AppColors.buttonColor : Colors.grey,
           ),
         );

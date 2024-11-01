@@ -1,116 +1,100 @@
 import 'package:task7/exports/exports.dart';
 
-class StoriesWidgets extends StatelessWidget {
-  final List<String> storyImages = [
-    AppImages.image1,
-    AppImages.image2,
-    AppImages.image3,
-    AppImages.image4,
-    AppImages.image1,
-    AppImages.image2,
-  ];
+class StoriesWidgetList extends StatelessWidget {
+  final List<String> imageUrls;
 
-  StoriesWidgets({super.key});
+  const StoriesWidgetList({Key? key, required this.imageUrls}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Positioned(
-          top: 145.99.h,
-          left: 14.78.w,
+        SizedBox(height: 20.h), 
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 14.78.w),
           child: SizedBox(
-            height: 80.h, 
-            width:
-                MediaQuery.of(context).size.width, 
+            height: 80.h,
+            width: MediaQuery.of(context).size.width,
             child: ListView.builder(
-              clipBehavior: Clip
-                  .none,
+              clipBehavior: Clip.none,
               scrollDirection: Axis.horizontal,
-              itemCount: storyImages.length, 
+              itemCount: imageUrls.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: EdgeInsets.only(
-                      right: 19.8875.w), 
-                  child: Transform.rotate(
-                    angle: 0.00488,
-                    child: Stack(
-                      clipBehavior:
-                          Clip.none, 
-                      children: [
-                        Container(
-                          width: 75.w,
-                          height: 80.h, 
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(21.65.r),
-                            border: Border.all(
-                                color: AppColors.buttonColor,
-                                width: 4.51.w), 
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.buttonColor.withOpacity(
-                                    0.5), 
-                                spreadRadius: 3.r, 
-                                blurRadius: 10.r, 
-                                offset:
-                                    Offset(0, 0), 
-                              ),
-                            ],
-                          ),
+                  padding: EdgeInsets.only(right: 19.8875.w),
+                  child: Stack(
+                    alignment: Alignment.centerRight,
+                    children: [
+                      // Image container
+                      Container(
+                        width: 75.w, // Outer width
+                        height: 80.h, // Outer height
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(21.65.r),
+                          border: Border.all(
+                            color: AppColors.buttonColor,
+                            width: 4.51.w,
+                          ), // Outer border
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.buttonColor.withOpacity(0.5),
+                              spreadRadius: 3.r,
+                              blurRadius: 10.r,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                        ),
+                        child: Center(
                           child: Container(
-                            width: 63.28.w,
-                            height: 62.76.h,
+                            width: 70.w, // Inner container width
+                            height: 70.h, // Inner container height
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(21.65.r),
                               border: Border.all(
-                                  color: AppColors.buttonTextColor,
-                                  width: 2.71.w),
+                                color: Color(0xffFFFFFF),
+                                width: 2.71.w,
+                              ),
                             ),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                  21.65.r), 
-                              child: Image.asset(
-                                storyImages[index],
+                              borderRadius: BorderRadius.circular(21.65.r),
+                              child: Image.network(
+                                imageUrls[index],
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
                         ),
-                        Positioned(
-                          bottom: -1
-                              .h, 
-                          right: -1
-                              .w, 
-                          child: Container(
-                            width: 25.7.w, 
-                            height: 25.7.h,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors
-                                  .fieldsColor, 
-                            ),
-                            child: Center(
-                              child: Container(
-                                width: 21.7.w,
-                                height: 21.7.h,
-                                decoration: const BoxDecoration(
-                                  color: Color(
-                                      0xff4DC9D1),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: SvgPicture.asset(
-                                    AppImages.videoIcon,
-                                   
-                                  ),
+                      ),
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          width: 25.7.w,
+                          height: 25.7.h,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          child: Center(
+                            child: Container(
+                              width: 21.7.w,
+                              height: 21.7.h,
+                              decoration: const BoxDecoration(
+                                color: Color(0xff4DC9D1),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(5.0.sp),
+                                child: SvgPicture.asset(
+                                  'assets/icons/Video.svg',
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 );
               },

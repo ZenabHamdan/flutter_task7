@@ -1,184 +1,189 @@
 import 'package:task7/exports/exports.dart';
-import 'package:task7/widgets/course_list.dart';
-import 'package:task7/widgets/stories_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  CourseModel course = CourseModel();
- 
-
+class _HomePageState extends State<HomeScreen> {
+  final PageController _pageController = PageController();
+  int _currentIndex = 0;
   int selectedIndex = 0;
 
-  final List<String> labels = ["All", "UI/UX", "Illustration", "3D Animated"];
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      setState(() {
+        _currentIndex = _pageController.page?.ceil() ?? 0;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.buttonTextColor,
-      body: Stack(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 14.72.w, top: 69.32.h),
-            child: Transform.rotate(
-              angle: 0.00488,
-              child: Stack(
-                children: [
-                  Container(
-                    width: 37.09.w,
-                    height: 37.09.h,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage(AppImages.avatarImage),
-                        fit: BoxFit.cover,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(85.h),
+        child: AppBar(
+          backgroundColor: AppColors.buttonTextColor,
+          elevation: 0,
+          flexibleSpace: Padding(
+            padding: EdgeInsets.only(left: 14.72.w, top: 59.32.h),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Profile Image with overlay
+                Container(
+                  width: 44.09.w, // Adjust as per your desired size
+                  height: 44.09.h,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        'https://s3-alpha-sig.figma.com/img/24c5/6156/1440c52b7db7866898da16ac1fea6ab0?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TppmtoPAtdwrlIyXP3VK5W1Ly83-O6eT7Lml5iX-gI4Kv-F5g2YzgA1EBPkBEyvgeCtpx8EuQLEuZLGd0gO6yTrJturlMO8GxhcyZ2kdpKQIZ4VqV~fpEAW-rfU~tH2LRXkXDBafZCM2ONrXev39-E5vFkiCQ~xUHCesgNM1w0OhL3Xe60Q3Z6NZWXNu0dKMIfc2IGrdUgLt-GBDoeXTaFvIYTVBtE~w-wGBpjA02qzbGSRIrAJY0TRHCzeUUHDvGoscncyCnn7wCvCi4GoMAgcLtEolpqORK1~Gur1Ff0lKQq0QRNeUwog6YJLiRcagC2lzvkUK5Rkwqp4nlzE30g__',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 32.14.h),
+                  child: Transform.translate(
+                    offset: Offset(-15.w, 0),
+                    child: SvgPicture.asset(AppImages.ellipseIcon),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    // Greeting Text
+                    Text(
+                      'Hallo, Samuel!',
+                      style: AppTextStyles.profileText.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.profileTextColor,
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 25.14.h,
-                    left: 25.2.w,
-                    child: Transform.rotate(
-                      angle: 0.00488,
-                      child: SvgPicture.asset(AppImages.ellipseIcon),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 69.03.w, top: 67.32.h),
-            child: Text(
-              'Hallo, Samuel!',
-              style: TextStyle(
-                fontSize: 14.44.sp,
-                fontWeight: FontWeight.w700,
-                color: AppColors.profileTextColor,
-              ),
-            ),
-          ),
-          Container(
-              margin: EdgeInsets.only(left: 64.36.w, top: 88.53.h),
-              child: SvgPicture.asset(
-                AppImages.awardIcon,
-                width: 16.44.w,
-                height: 16.44.h,
-              )),
-          Container(
-            margin: EdgeInsets.only(left: 78.w, top: 88.53.h),
-            child: Text(
-              '+1600',
-              style: TextStyle(
-                fontSize: 12.63.sp,
-                fontWeight: FontWeight.w600,
-                color: Color(0xff4ED442),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 117.w, top: 88.53.h),
-            child: Text(
-              'Points',
-              style: TextStyle(
-                fontSize: 12.63.sp,
-                fontWeight: FontWeight.w400,
-                color: Color(0xff4ED442),
-              ),
-            ),
-          ),
-          Container(
-              margin: EdgeInsets.only(left: 330.57.w, top: 75.69.h),
-              child: SvgPicture.asset(
-                AppImages.notificationsIcon,
-                width: 23.65.w,
-                height: 23.65.h,
-              )),
-          StoriesWidgets(),
-          Positioned(
-            top: 250.46.h,
-            left: 15.21.w,
-            child: Text(
-              'Upcoming',
-              style: TextStyle(
-                fontSize: 16.24.sp,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 250.46.h,
-            left: 88.21.w,
-            child: Text(
-              'course of this week',
-              style: TextStyle(
-                fontSize: 16.24.sp,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 297.39.h,
-            left: 15.4.w,
-            child: SizedBox(
-              height: 40.16.h,
-              width: MediaQuery.of(context).size.width,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: labels.length,
-                itemBuilder: (context, index) {
-                  final isSelected = selectedIndex == index;
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 14.w),
-                      child: Transform.rotate(
-                        angle: 0.00488,
-                        child: Container(
-                          height: 37.16.h,
-                          decoration: BoxDecoration(
-                            color: isSelected
-                                ? AppColors.buttonColor
-                                : AppColors.fieldsColor,
-                            borderRadius: BorderRadius.circular(7.22.r),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.0.sp),
-                            child: Center(
-                              child: Text(
-                                labels[index],
-                                style: TextStyle(
-                                  fontSize: 12.63.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: isSelected
-                                      ? AppColors.fieldsColor
-                                      : AppColors.hintTextColor,
-                                ),
-                              ),
-                            ),
+
+                    SizedBox(height: 5.h),
+
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppImages.awardIcon,
+                          width: 16.44.w,
+                          height: 16.44.h,
+                        ),
+                        SizedBox(width: 4.w),
+                        // +1600 Points Text
+                        Text(
+                          '+1600',
+                          style: AppTextStyles.profileDescriptionText.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.greenColor,
                           ),
                         ),
-                      ),
+                        SizedBox(width: 4.w),
+                        // Points Label
+                        Text(
+                          'Points',
+                          style: AppTextStyles.profileDescriptionText.copyWith(
+                            color: AppColors.greenColor,
+                          ),
+                        ),
+                      ],
                     ),
-                  );
-                },
-              ),
+                  ],
+                ),
+
+                SizedBox(width: 175.w),
+
+                Container(
+                  margin: EdgeInsets.only(top: 5.h),
+                  child: SvgPicture.asset(
+                    AppImages.notificationsIcon,
+                    width: 23.65.w,
+                    height: 23.65.h,
+                  ),
+                ),
+              ],
             ),
           ),
-          Positioned(
-            top: 320.h,
-            left: 3,
-            right: 0,
-            child: const CourseList(),
+        ),
+      ),
+      body: Column(
+        children: [
+          Center(
+            child: StoriesWidgetList(imageUrls: ImageUrls.urls),
+          ),
+          Column(
+            children: [
+              SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15.21.w),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Upcoming',
+                      style: TextStyle(
+                        fontSize: 16.24.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(width: 10.w), // Space between the two texts
+                    Text(
+                      'course of this week',
+                      style: TextStyle(
+                        fontSize: 16.24.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          LabelsWidgetList(
+            labels: Label.labels,
+            selectedIndex: selectedIndex,
+            onLabelTap: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+          ),
+          SizedBox(height: 20.h),
+          ImageSliderWidget(
+            pageController: _pageController,
+            currentIndex: _currentIndex,
+            imageUrls: SecondImageURls.urls,
+            stepTexts: StepText.stepTexts,
+            nameTexts: NameText.nameTexts,
+            descriptionTexts: DescriptionText.descriptionTexts,
+            thirdTexts: ThirdText.thirdText,
+            thirdImageUrls: ThirdImageURls.urls,
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              padding: EdgeInsets.only(top: 25.h),
+              child: ImageIndicator(
+                currentIndex: _currentIndex,
+                itemCount: SecondImageURls.urls.length,
+              ),
+            ),
           ),
         ],
       ),

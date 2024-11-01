@@ -62,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   title: 'Sign Up',
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                        MaterialPageRoute(builder: (context) => const NavigationBarScreen()));
                   }),
               SizedBox(
                 height: 26.8.h,

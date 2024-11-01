@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   title: 'Log in',
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
+                        builder: (context) => const NavigationBarScreen()));
                   }),
               SizedBox(
                 height: 20.16.h,
