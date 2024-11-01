@@ -4,8 +4,8 @@ class AppImages {
   static String logoImage = '$rootImage/logo.svg';
   static String videoBoxImage = '$rootImage/Videobox.svg';
 
-
   static String rootIcon = 'assets/icons';
+
   static String awardIcon = '$rootIcon/award.svg';
   static String backArrowIcon = '$rootIcon/back.svg';
   static String calenderIcon = '$rootIcon/calender.svg';
@@ -20,4 +20,5 @@ class AppImages {
   static String profileIcon = '$rootIcon/profile.svg';
   static String searchIcon = '$rootIcon/search.svg';
   static String stopWatchIcon = '$rootIcon/stopwatch.svg';
+  static String greenIcon = '$rootIcon/Ellipse 1.svg';
 }

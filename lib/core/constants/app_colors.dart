@@ -12,4 +12,5 @@ class AppColors {
   static Color free_e_BookColor = Color(0xffFCCC75);
   static Color blueIconColor = Color(0xff4DC9D1);
   static Color purbleIconColor = Color(0xff8D5EF2);
+  static Color greenIconColor = Color(0xff4ED442);
 }
