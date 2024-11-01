@@ -1,3 +1,4 @@
+import 'package:task7/core/constants/app_images.dart';
 import 'package:task7/core/constants/app_text_styles.dart';
 import 'package:task7/widgets/widgets.dart';
 
@@ -22,7 +23,7 @@ class MessagesScreen extends StatelessWidget {
                 CircleAvatar(
                   radius: 19.r, // Increased size for better visibility
                   backgroundImage:
-                      const AssetImage("assets/images/Avatar_0.png"),
+                       AssetImage(AppImages.avatar_0),
                 ),
                 Container(
                   width: 10.r,
@@ -61,7 +62,7 @@ class MessagesScreen extends StatelessWidget {
             child: Stack(
               alignment: AlignmentDirectional.topEnd,
               children: [
-                Icon(Icons.notifications),
+                const Icon(Icons.notifications),
                 Container(
                   width: 14.r,
                   height: 10.r,
@@ -100,25 +101,23 @@ class MessagesScreen extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.all(15.w),
-                      child: Text("Search here"),
+                      child: const Text("Search here"),
                     ),
                   ),
                   Container(
-                    child: Container(
-                      margin: EdgeInsets.all(3.sp),
-                      width: 39.72.w,
-                      height: 40.3.h,
-                      decoration: BoxDecoration(
-                        color: AppColors.buttonColor,
-                        borderRadius: BorderRadius.all(Radius.circular(11.r)),
-                        border: Border.all(
-                          color: Colors.grey,
-                        ),
+                    margin: EdgeInsets.all(3.sp),
+                    width: 39.72.w,
+                    height: 40.3.h,
+                    decoration: BoxDecoration(
+                      color: AppColors.buttonColor,
+                      borderRadius: BorderRadius.all(Radius.circular(11.r)),
+                      border: Border.all(
+                        color: Colors.grey,
                       ),
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
+                    ),
+                    child: const Icon(
+                      Icons.search,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -150,44 +149,7 @@ class MessagesScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FloatingActionButton(
-                      onPressed: () {},
-                      child: Text("chang"),
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                      width: 25.0.w,
-                    ),
-                    FloatingActionButton(
-                      onPressed: () {},
-                      child: Text("to"),
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                      width: 25.0.w,
-                    ),
-                    FloatingActionButton(
-                      onPressed: () {},
-                      child: Text("nav"),
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                      width: 25.0.w,
-                    ),
-                    FloatingActionButton(
-                      onPressed: () {},
-                      child: Text("bar"),
-                    ),
-                  ],
-                ),
-              ),
-            )
+
           ],
         ),
       ),
