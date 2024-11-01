@@ -10,7 +10,7 @@ class NavigationBarScreen extends StatefulWidget {
 class _NavigationBarScreenState extends State<NavigationBarScreen> {
   int currentIndex = 0;
 
-  // Define the screens for each navigation item
+
   final List<Widget> screens = [
     const HomeScreen(),
     const DisableScreen(),

@@ -93,13 +93,13 @@ class StoriesWidgets extends StatelessWidget {
                               child: Container(
                                 width: 21.7.w,
                                 height: 21.7.h,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(
                                       0xff4DC9D1),
                                   shape: BoxShape.circle,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.only(top: 4.0, left: 2.0),
+                                  padding: const EdgeInsets.all(5.0),
                                   child: SvgPicture.asset(
                                     AppImages.videoIcon,
                                    

@@ -23,3 +23,4 @@ export 'package:task7/widgets/bottom_sheet.dart';
 export 'package:task7/model/schedule_time.dart';
 export 'package:task7/view/navigation_bar/navigation_bar.dart';
 export  'package:task7/widgets/indicator_home_screen.dart';
+export  'package:task7/widgets/chat_item.dart';

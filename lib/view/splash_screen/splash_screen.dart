@@ -1,6 +1,4 @@
 import 'package:task7/exports/exports.dart';
-import 'package:task7/view/login_screen/login_screen.dart';
-import 'package:task7/widgets/custom_button.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

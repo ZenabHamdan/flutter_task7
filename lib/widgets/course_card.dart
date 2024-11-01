@@ -58,138 +58,145 @@ class _CourseCardState extends State<CourseCard> {
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(21.65.r),
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                              images[index],
-                              width: 270.81.w,
-                              height: 329.13.h,
-                              fit: BoxFit.cover,
-                            ),
-                            Container(
-                              width: 270.81.w,
-                              height: 329.13.h,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Colors.transparent,
-                                    (index == _currentIndex)
-                                        ? Colors.black.withOpacity(0.8)
-                                        : Colors.black.withOpacity(0.99),
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const DetailScreen()));
+                          },
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                images[index],
+                                width: 270.81.w,
+                                height: 329.13.h,
+                                fit: BoxFit.cover,
+                              ),
+                              Container(
+                                width: 270.81.w,
+                                height: 329.13.h,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Colors.transparent,
+                                      (index == _currentIndex)
+                                          ? Colors.black.withOpacity(0.8)
+                                          : Colors.black.withOpacity(0.99),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              if (index == 0)
+                                Positioned(
+                                  top: 13.61.h,
+                                  left: 10.83,
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 8.0.w, vertical: 4.0.h),
+                                    decoration: BoxDecoration(
+                                        color: AppColors.free_e_BookColor,
+                                        borderRadius:
+                                            BorderRadius.circular(18.04.r)),
+                                    child: Text(
+                                      "Free e-book",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 9.02.sp,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              Positioned(
+                                top: 155.49.h,
+                                left: 10.83.w,
+                                child: Text(
+                                  widget.course.title,
+                                  style: TextStyle(
+                                    fontSize: 16.24.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.buttonTextColor,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 207.80.h,
+                                left: 10.83.w,
+                                child: SvgPicture.asset(
+                                  AppImages.stopWatchIcon,
+                                  width: 16.41.w,
+                                  height: 16.04.h,
+                                ),
+                              ),
+                              Positioned(
+                                top: 210.80.h,
+                                left: 25.78.w,
+                                child: Text(
+                                  widget.course.duration,
+                                  style: TextStyle(
+                                    fontSize: 9.02.sp,
+                                    color: AppColors.descriptionColor,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 210,
+                                left: 18,
+                                child: Row(
+                                  children: [
+                                    _buildChip(
+                                        '6 lessons', AppColors.blueIconColor),
+                                    SizedBox(width: 7.14.w),
+                                    _buildChip(
+                                        'UI/UX', AppColors.facebookFieldColor),
+                                    SizedBox(width: 7.14.w),
+                                    _buildChip('Free', AppColors.purbleIconColor),
                                   ],
                                 ),
                               ),
-                            ),
-                            if (index == 0)
                               Positioned(
-                                top: 13.61.h,
-                                left: 10.83,
+                                top: 265.80.h,
+                                left: 15.78.w,
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 8.0.w, vertical: 4.0.h),
+                                  width: 36.0.w,
+                                  height: 36.0.h,
                                   decoration: BoxDecoration(
-                                      color: AppColors.free_e_BookColor,
-                                      borderRadius:
-                                          BorderRadius.circular(18.04.r)),
-                                  child: Text(
-                                    "Free e-book",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 9.02.sp,
-                                        fontWeight: FontWeight.w500),
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                          widget.course.profilePicture),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
-                            Positioned(
-                              top: 155.49.h,
-                              left: 10.83.w,
-                              child: Text(
-                                widget.course.title,
-                                style: TextStyle(
-                                  fontSize: 16.24.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.buttonTextColor,
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              top: 207.80.h,
-                              left: 10.83.w,
-                              child: SvgPicture.asset(
-                                AppImages.stopWatchIcon,
-                                width: 16.41.w,
-                                height: 16.04.h,
-                              ),
-                            ),
-                            Positioned(
-                              top: 210.80.h,
-                              left: 25.78.w,
-                              child: Text(
-                                widget.course.duration,
-                                style: TextStyle(
-                                  fontSize: 9.02.sp,
-                                  color: AppColors.descriptionColor,
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              top: 210,
-                              left: 18,
-                              child: Row(
-                                children: [
-                                  _buildChip(
-                                      '6 lessons', AppColors.blueIconColor),
-                                  SizedBox(width: 7.14.w),
-                                  _buildChip(
-                                      'UI/UX', AppColors.facebookFieldColor),
-                                  SizedBox(width: 7.14.w),
-                                  _buildChip('Free', AppColors.purbleIconColor),
-                                ],
-                              ),
-                            ),
-                            Positioned(
-                              top: 265.80.h,
-                              left: 15.78.w,
-                              child: Container(
-                                width: 36.0.w,
-                                height: 36.0.h,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image: AssetImage(widget.course
-                                        .profilePicture), 
-                                    fit: BoxFit.cover,
+                              Positioned(
+                                top: 270.80.h,
+                                left: 60.78.w,
+                                child: Text(
+                                  widget.course.instructorName,
+                                  style: TextStyle(
+                                    fontSize: 14.44.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.buttonTextColor,
                                   ),
                                 ),
                               ),
-                            ),
-                            Positioned(
-                              top: 270.80.h,
-                              left: 60.78.w,
-                              child: Text(
-                                widget.course.instructorName,
-                                style: TextStyle(
-                                  fontSize: 14.44.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.buttonTextColor,
+                              Positioned(
+                                top: 290.80.h,
+                                left: 60.78.w,
+                                child: Text(
+                                  widget.course.instructorTitle,
+                                  style: TextStyle(
+                                    fontSize: 9.02.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.hintTextColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Positioned(
-                              top: 290.80.h,
-                              left: 60.78.w,
-                              child: Text(
-                                widget.course.instructorTitle,
-                                style: TextStyle(
-                                  fontSize: 9.02.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.hintTextColor,
-                                ),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
