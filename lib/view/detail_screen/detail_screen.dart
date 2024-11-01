@@ -1,5 +1,6 @@
 import 'package:task7/exports/exports.dart';
 
+
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key});
 
